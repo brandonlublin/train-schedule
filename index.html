@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Station Schedule</title>
+    <!-- reset stylesheet -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- main style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- font family style -->
+    <link href="https://fonts.googleapis.com/css?family=Belleza|Playfair+Display+SC:700" rel="stylesheet">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- firebase script -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- momentjs cdn -->
+    <script src='https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js'></script>
+</head>
+<body>
+    <img src="assets/images/train.jpg" alt="train-background" class='trainPicture'>
+    <div class="container">
+        <div class="row">
+            <div class='col-md-12'>
+                <div class="jumbotron jumbotron-fluid">
+                    <h1 class="display-4">Train Schedule</h1>
+                    <p class="lead"></p>
+                    <hr class="my-4">
+                    <p>Content</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header previewHeader">
+                        Train Schedule Time
+                    </div>
+                    <div class="card-body previewBody">
+                        <table class="table previewTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Train Name:</th>
+                                    <th scope="col">Destination:</th>
+                                    <th scope="col">Frequency:</th>
+                                    <th scope="col">Next Arrival:</th>
+                                    <th scope="col">Minutes Away:</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header addTrainHeader">
+                        Add Train
+                    </div>
+                    <div class="card-body addTrainBody">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Train Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Jane Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Destination</label>
+                                <input type="text" class="form-control" id="role" placeholder="The Boss">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">First Train Time (HH:mm - Military Time</label>
+                                <input type="text" class="form-control" id="start-date" placeholder="01/01/1999">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Frequency</label>
+                                <input type="text" class="form-control" id="monthly-rate" placeholder="4000">
+                            </div>
+                        </form>
+                        <a href="#" class="btn btn-primary" id="submit">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <script src='assets/javascript/app.js'></script>
+</body>
+</html>
