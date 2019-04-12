@@ -20,16 +20,18 @@
     width: 90%;
     border-color: #fff;
 }
-.previewHeader, .addTrainHeader {
+.previewHeader, .addTrainHeader  {
     background-color: #4054B2;
     color: #fff;
     font-family: 'Belleza', sans-serif;
     font-size: 20px;
     opacity: 0.7;
     border-radius: 2%;
-    text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
+}
+.uppercase, .addTrainHeader {
+    text-transform: uppercase;
 }
 .previewTable {
     font-family: 'Belleza', sans-serif;

@@ -53,35 +53,24 @@ $(document).ready(function () {
         var colTrainNameDb = $("<td>").text(childSnapshot.val().trainName);
         var colDestinationLocDb = $("<td>").text(childSnapshot.val().destination);
         var colFrequencyDb = $("<td>").text(childSnapshot.val().timing);
-        var colNextArrivalDb = $("<td>").text();
-        var colMinutesAway = $("<td>").text();
-
-        //calculate when next bus will come based off the start time and the current time
-        
-        var freq;
-        console.log(colFrequencyDb);
-        
-        //CURRENT TIME
-        var currentTime = moment();
-        //FIRST TIME: PUSHED BACK ONE YEAR TO COME BEFORE CURRENT TIME
-        // var dConverted = moment(time,'hh:mm').subtract(1, 'years');
-        var convertedDay = moment(childSnapshot.val().colFrequencyDb, 'HH:mm').subtract(1, 'years');
-        var trainTime = moment(convertedDay).format('HH:mm');
-        
-        //
-        var convertedTime = moment(trainTime, 'HH:mm').subtract(1, 'years');
-        var timeDifference = moment().diff(moment(convertedTime), 'minutes');
-        //
-        var timeRemaining = timeDifference % freq;
-        //
-        var minsAway = freq - timeRemaining;
-        //
-        var nextTrain = moment().add(minsAway, 'minutes');
-
+        var colNextArrivalDb = $("<td>").text("Placeholder");
+        var colMinutesAway = $("<td>").text('Placeholder');
     
+        
+        //calculate when next bus will come based off the start time and the current time
 
+
+        //Current Time - push to DOM
+        var currentTime = moment().format('HH:mm');
+        $('#currentMilitaryTime').text(currentTime);
+
+        var firstArrival = moment(childSnapshot.trainStart, 'HH:mm').subtract(1, 'years');
+        var diffTime = moment().diff(moment(firstArrival), "minutes");
+        console.log(diffTime);
+        
         
 
+        
         //entering each variable into the DOM
         $('#table-body').append(
             newTrainDb).append(
