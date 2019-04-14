@@ -45,7 +45,35 @@ $(document).ready(function () {
     //query database to assign each field in the db to a new table-column
     database.ref().on("child_added", function (childSnapshot) {
 
+        
+        //calculate when next bus will come based off the start time and the current time
 
+
+        //Current Time - push to DOM
+
+        var tFrequency = childSnapshot.val().timing;
+
+        // Time is 3:30 AM
+        var firstTime = "03:30";
+
+        // First Time (pushed back 1 year to make sure it comes before current time)
+        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+
+        // Current Time
+        var currentTime = moment().format('HH:mm');
+
+        // Difference between the times
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+
+        // Time apart (remainder)
+        var tRemainder = diffTime % tFrequency;
+
+        // Minute Until Train
+        var tMinutesTillTrain = tFrequency - tRemainder;
+
+        // Next Train
+        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+        
         //creating a new table row 
         var newTrainDb = $("<tr>").addClass("train-row");
 
@@ -53,28 +81,10 @@ $(document).ready(function () {
         var colTrainNameDb = $("<td>").text(childSnapshot.val().trainName);
         var colDestinationLocDb = $("<td>").text(childSnapshot.val().destination);
         var colFrequencyDb = $("<td>").text(childSnapshot.val().timing);
-        var colNextArrivalDb = $("<td>").text("Placeholder");
-        var colMinutesAway = $("<td>").text('Placeholder');
+        var colNextArrivalDb = $("<td>").text(moment(nextTrain).format("HH:mm"));
+        var colMinutesAway = $("<td>").text(tMinutesTillTrain);
     
-        
-        //calculate when next bus will come based off the start time and the current time
-
-
-        //Current Time - push to DOM
-        var currentTime = moment().format('HH:mm');
         $('#currentMilitaryTime').text(currentTime);
-
-
-        
-
-        var firstArrival = moment(childSnapshot.trainStart, 'HH:mm').subtract(1, 'years');
-        var diffTime = moment().diff(moment(firstArrival), "minutes");
-        console.log(firstArrival);
-        console.log(diffTime);
-        
-        
-        
-
         
         //entering each variable into the DOM
         $('#table-body').append(
