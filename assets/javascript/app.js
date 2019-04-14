@@ -64,9 +64,14 @@ $(document).ready(function () {
         var currentTime = moment().format('HH:mm');
         $('#currentMilitaryTime').text(currentTime);
 
+
+        
+
         var firstArrival = moment(childSnapshot.trainStart, 'HH:mm').subtract(1, 'years');
         var diffTime = moment().diff(moment(firstArrival), "minutes");
+        console.log(firstArrival);
         console.log(diffTime);
+        
         
         
 
